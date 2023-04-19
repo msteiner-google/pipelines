@@ -40,6 +40,11 @@
              "isOptional": true,
              "parameterType": "STRING"
            },
+           "excluded_fields": {
+            "defaultValue": [],
+            "isOptional": true,
+            "parameterType": "LIST"
+           },
            "encryption_spec_key_name": {
              "defaultValue": "",
              "isOptional": true,
@@ -70,13 +75,28 @@
              "isOptional": true,
              "parameterType": "BOOLEAN"
            },
+           "included_fields": {
+            "defaultValue": [],
+            "isOptional": true,
+            "parameterType": "LIST"
+           },
            "instances_format": {
              "defaultValue": "jsonl",
              "isOptional": true,
              "parameterType": "STRING"
            },
+           "instance_type": {
+            "defaultValue": "",
+            "isOptional": true,
+            "parameterType": "STRING"
+           },
            "job_display_name": {
              "parameterType": "STRING"
+           },
+           "key_field": {
+            "defaultValue": "",
+            "isOptional": true,
+            "parameterType": "STRING"
            },
            "labels": {
              "defaultValue": {},

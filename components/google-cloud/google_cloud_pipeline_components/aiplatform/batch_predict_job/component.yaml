@@ -217,6 +217,10 @@ inputs:
 - {name: instances_format, type: String, default: "jsonl"}
 - {name: gcs_source_uris, type: JsonArray, optional: true, default: '[]'}
 - {name: bigquery_source_input_uri, type: String, optional: true, default: ''}
+- {name: instance_type, type: String, optional: true, default: ''}
+- {name: key_field, type: String, optional: true, default: ''}
+- {name: included_fields, type: JsonArray, optional: true, default: '[]'}
+- {name: excluded_fields, type: JsonArray, optional: true, default: '[]'}
 - {name: model_parameters, type: JsonObject, optional: true, default: '{}'}
 - {name: predictions_format, type: String, default: "jsonl"}
 - {name: gcs_destination_output_uri_prefix, type: String, optional: true, default: ''}
@@ -267,6 +271,12 @@ implementation:
           ', "bigquery_source": {',
           '"input_uri": "', {inputValue: bigquery_source_input_uri}, '"',
           '}',
+          '}',
+          ', "instance_config": {',
+          '"instance_type": "', {inputValue: instance_type}, '"',
+          '", key_field": "', {inputValue: key_field}, '"',
+          '", included_fields": "', {inputValue: included_fields}, '"',
+          '", excluded_fields": "', {inputValue: excluded_fields}, '"',
           '}',
           ', "model_parameters": ', {inputValue: model_parameters},
           ', "output_config": {',
