@@ -17,6 +17,7 @@ import json
 import os
 import time
 
+from google.api_core import client_options
 import google.auth
 import google.auth.transport.requests
 from google.cloud import aiplatform
@@ -129,10 +130,12 @@ class BatchPredictionJobRemoteRunnerUtilsTests(unittest.TestCase):
     )
 
     mock_job_service_client.assert_called_once_with(
-        client_options={
-            'api_endpoint': 'test_region-aiplatform.googleapis.com'
-        },
+        client_options=mock.ANY,
         client_info=mock.ANY,
+    )
+    self.assertEqual(
+        mock_job_service_client.call_args.kwargs['client_options'].api_endpoint,
+        'test_region-aiplatform.googleapis.com',
     )
 
     expected_parent = f'projects/{self._project}/locations/{self._location}'
@@ -268,10 +271,12 @@ class BatchPredictionJobRemoteRunnerUtilsTests(unittest.TestCase):
     )
 
     mock_job_service_client.assert_called_once_with(
-        client_options={
-            'api_endpoint': 'test_region-aiplatform.googleapis.com'
-        },
+        client_options=mock.ANY,
         client_info=mock.ANY,
+    )
+    self.assertEqual(
+        mock_job_service_client.call_args.kwargs['client_options'].api_endpoint,
+        'test_region-aiplatform.googleapis.com',
     )
 
     expected_parent = f'projects/{self._project}/locations/{self._location}'

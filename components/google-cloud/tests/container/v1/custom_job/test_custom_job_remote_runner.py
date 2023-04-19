@@ -94,10 +94,12 @@ class CustomJobRemoteRunnerUtilsTests(unittest.TestCase):
         self._gcp_resources,
     )
     mock_job_service_client.assert_called_once_with(
-        client_options={
-            "api_endpoint": "test_region-aiplatform.googleapis.com"
-        },
+        client_options=mock.ANY,
         client_info=mock.ANY,
+    )
+    self.assertEqual(
+        mock_job_service_client.call_args.kwargs["client_options"].api_endpoint,
+        "test_region-aiplatform.googleapis.com",
     )
 
   @mock.patch.object(aiplatform.gapic, "JobServiceClient", autospec=True)
